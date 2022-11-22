@@ -55,7 +55,7 @@ export default {
         request.post('/user/update', this.form).then(res => {
             if (res.code === '200'){
                 this.$notify.success('更新成功')
-                this.$router.push("/user")
+                this.$router.push("/userList")
             }else {
                 this.$notify.error(res.msg)
             }

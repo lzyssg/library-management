@@ -1,48 +1,67 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Layout from '../views/Layout.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+  //-----------------登录------------
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/login/Login.vue')
+  },
+  //-----------------主页------------
   {
     path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  // -----------------user--------------------
+    name: 'Layout',
+    component: Layout,
+    redirect: '/home',//重定向
+    children: [
+
+      {
+        path: 'home',
+        name: 'Home',
+        component: () => import('@/views/home/HomeView.vue'),
+      },
+
+      // -----------------user--------------------
   {
-    path: '/user',
-    name: 'User',
+    path: 'userList',
+    name: 'UserList',
     component: () => import('@/views/user/User.vue'),
   },
   {
-    path: '/addUser',
+    path: 'addUser',
     name: 'AddUser',
     component: () => import('@/views/user/AddUser.vue'),
   },
   {
-    path: '/editUser',
+    path: 'editUser',
     name: 'EditUser',
     component: () => import('@/views/user/EditUser.vue'),
   },
 
   //-----------------admin--------------------
   {
-    path: '/admin',
-    name: 'Admin',
+    path: 'adminList',
+    name: 'AdminList',
     component: () => import('@/views/admin/List.vue'),
   },
   {
-    path: '/addAdmin',
+    path: 'addAdmin',
     name: 'AddAdmin',
     component: () => import('@/views/admin/Add.vue'),
   },
   {
-    path: '/editAdmin',
+    path: 'editAdmin',
     name: 'EditAdmin',
     component: () => import('@/views/admin/Edit.vue'),
   }
+
+    ]
+  },
+  
   
 ]
 
