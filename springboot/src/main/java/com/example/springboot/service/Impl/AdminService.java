@@ -1,12 +1,13 @@
 package com.example.springboot.service.Impl;
 
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.io.unit.DataUnit;
 import cn.hutool.core.util.IdUtil;
 import com.example.springboot.controller.request.BaseRequest;
-import com.example.springboot.controller.request.UserPageRequest;
-import com.example.springboot.entity.User;
+import com.example.springboot.entity.Admin;
+import com.example.springboot.entity.Admin;
+import com.example.springboot.mapper.AdminMapper;
 import com.example.springboot.mapper.UserMapper;
+import com.example.springboot.service.IAdminService;
 import com.example.springboot.service.IUserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -17,41 +18,40 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class UserService implements IUserService {
+public class AdminService implements IAdminService {
     @Autowired
-    UserMapper userMapper;
+    AdminMapper adminMapper;
     @Override
-    public List<User> list() {
-        return userMapper.list();
+    public List<Admin> list() {
+        return adminMapper.list();
     }
 
     @Override
-    public PageInfo<User> page(BaseRequest baseRequest){
+    public PageInfo<Admin> page(BaseRequest baseRequest){
         PageHelper.startPage(baseRequest.getPageNum(),baseRequest.getPageSize());
-        List<User> users = userMapper.listByCondition(baseRequest);
+        List<Admin> users = adminMapper.listByCondition(baseRequest);
         return new PageInfo<>(users);
     }
 
     @Override
-    public void save(User user) {
-        Date date = new Date();
-        user.setUsername(DateUtil.format(date,"yyyyMMdd")+ Math.abs(IdUtil.fastSimpleUUID().hashCode()));
-        userMapper.save(user);
+    public void save(Admin obj) {
+
+        adminMapper.save(obj);
     }
 
     @Override
-    public User getById(Integer id) {
-        return userMapper.getById(id);
+    public Admin getById(Integer id) {
+        return adminMapper.getById(id);
     }
 
     @Override
-    public void update(User user) {
+    public void update(Admin user) {
         user.setUpdatetime(new Date());
-        userMapper.updateById(user);
+        adminMapper.updateById(user);
     }
 
     @Override
     public void deleteById(Integer id) {
-        userMapper.deleteById(id);
+        adminMapper.deleteById(id);
     }
 }

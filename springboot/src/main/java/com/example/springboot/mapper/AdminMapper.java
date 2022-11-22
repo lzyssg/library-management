@@ -2,24 +2,23 @@ package com.example.springboot.mapper;
 
 import com.example.springboot.controller.request.BaseRequest;
 import com.example.springboot.controller.request.UserPageRequest;
+import com.example.springboot.entity.Admin;
 import com.example.springboot.entity.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
 @Mapper
-public interface UserMapper {
-//    @Select("select * from user")
-    List<User> list();
+public interface AdminMapper {
+    List<Admin> list();
 
-    List<User> listByCondition(BaseRequest baseRequest);
+    List<Admin> listByCondition(BaseRequest baseRequest);
 
-    void save(User user);
+    void save(Admin obj);
 
-    User getById(Integer id);
+    Admin getById(Integer id);
 
-    void updateById(User user);
+    void updateById(Admin user);
 
     void deleteById(Integer id);
 }

@@ -2,21 +2,22 @@ package com.example.springboot.service;
 
 import com.example.springboot.controller.request.BaseRequest;
 import com.example.springboot.controller.request.UserPageRequest;
+import com.example.springboot.entity.Admin;
 import com.example.springboot.entity.User;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
-public interface IUserService {
-    List<User> list();
+public interface IAdminService {
+    List<Admin> list();
 
-    PageInfo<User> page(BaseRequest baseRequest);
+    PageInfo<Admin> page(BaseRequest baseRequest);
 
-    void save(User user);
+    void save(Admin obj);
 
-    User getById(Integer id);
+    Admin getById(Integer id);
 
-    void update(User user);
+    void update(Admin obj);
 
     void deleteById(Integer id);
 }

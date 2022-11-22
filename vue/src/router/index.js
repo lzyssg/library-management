@@ -10,6 +10,7 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+  // -----------------user--------------------
   {
     path: '/user',
     name: 'User',
@@ -24,6 +25,23 @@ const routes = [
     path: '/editUser',
     name: 'EditUser',
     component: () => import('@/views/user/EditUser.vue'),
+  },
+
+  //-----------------admin--------------------
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: () => import('@/views/admin/List.vue'),
+  },
+  {
+    path: '/addAdmin',
+    name: 'AddAdmin',
+    component: () => import('@/views/admin/Add.vue'),
+  },
+  {
+    path: '/editAdmin',
+    name: 'EditAdmin',
+    component: () => import('@/views/admin/Edit.vue'),
   }
   
 ]
